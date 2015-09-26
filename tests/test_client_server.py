@@ -5,10 +5,10 @@ import ssl
 import unittest
 import unittest.mock
 
-from .client import *
-from .exceptions import InvalidHandshake
-from .http import USER_AGENT, read_response
-from .server import *
+from websockets.client import *
+from websockets.exceptions import InvalidHandshake
+from websockets.http import USER_AGENT, read_response
+from websockets.server import *
 
 
 # Avoid displaying stack traces at the ERROR logging level.

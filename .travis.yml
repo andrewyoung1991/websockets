@@ -4,18 +4,17 @@ python:
   - "3.4"
   - "3.5"
   - "3.5-dev" # 3.5 development branch
-  - "nightly" # currently points to 3.6-dev
 
 install:
-  - pip install tox
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.3 ]]; then pip install asyncio; fi
   - pip install coverage
   - pip install flake8
   - pip install isort
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then pip install asyncio; fi
+  - pip install -e .
 
-env:
-  - TOX_ENV=coverage  # runs tests and coverage (fails on coverage less than 100)
-  - TOX_ENV=flake8  # runs pep8
-  - TOX_ENV=isort
-
-script: tox -e $TOX_ENV
+script:
+  - coverage erase
+  - coverage run --branch --source=websockets setup.py test
+  - coverage report --fail-under=100
+  - flake8 websockets
+  - isort --check-only --recursive websockets

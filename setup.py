@@ -23,6 +23,10 @@ py_version = sys.version_info[:2]
 if py_version < (3, 3):
     raise Exception("websockets requires Python >= 3.3.")
 
+deps = []
+if py_version == (3, 3):
+    deps = ['asyncio']
+
 setuptools.setup(
     name='websockets',
     version=version,
@@ -32,20 +36,9 @@ setuptools.setup(
     description="An implementation of the WebSocket Protocol (RFC 6455)",
     long_description=long_description,
     download_url='https://pypi.python.org/pypi/websockets',
-    packages=[
-        'websockets',
-        ],
-    extras_require={
-        ':python_version=="3.3"': ['asyncio'],
-        },
-    tests_require={
-        },
-    entry_points={
-        'console_scripts': [
-            'run-example-server=example.server:main',
-            'run-example-client=example.client:main',
-            ]
-        },
+    packages=['websockets'],
+    install_require=deps,
+    test_suite="tests",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
@@ -56,7 +49,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
-        ],
+    ],
     platforms='all',
     license='BSD'
 )

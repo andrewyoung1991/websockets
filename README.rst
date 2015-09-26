@@ -1,6 +1,6 @@
 WebSockets
 ==========
-[![Build Status](https://travis-ci.org/andrewyoung1991/websockets.svg)](https://travis-ci.org/andrewyoung1991/websockets)
+.. image:: https://travis-ci.org/andrewyoung1991/websockets.svg?branch=travis-current-python-build
 
 ``websockets`` is a library for developing WebSocket servers_ and clients_ in
 Python. It implements `RFC 6455`_ with a focus on correctness and simplicity.

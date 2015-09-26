@@ -6,9 +6,9 @@ import time
 import unittest
 import unittest.mock
 
-from .exceptions import InvalidState
-from .framing import *
-from .protocol import CLOSED, WebSocketCommonProtocol
+from websockets.exceptions import InvalidState
+from websockets.framing import *
+from websockets.protocol import CLOSED, WebSocketCommonProtocol
 
 
 # Unit for timeouts. May be increased on slow machines by setting the
