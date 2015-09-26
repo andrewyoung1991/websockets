@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-
 import asyncio
 import websockets
+
 
 @asyncio.coroutine
 def hello():
@@ -13,4 +13,10 @@ def hello():
     print("< {}".format(greeting))
     yield from websocket.close()
 
-asyncio.get_event_loop().run_until_complete(hello())
+
+def main(coroutine):
+    asyncio.get_event_loop().run_until_complete(coroutine())
+
+
+if __name__ == "__main__":
+    main(hello)
